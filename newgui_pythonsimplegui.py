@@ -242,14 +242,14 @@ frame_selectFiles = [[sg.Text("Select source files", font=("Calibri", 20))],
                     ]
 #select colors
 frame_selectInColors = [[sg.Text("Select origin color"), sg.Text("   ", background_color=in_color, key="-TXTINCOLOR-")],
-                        [sg.Text("R: "), sg.In(key="-ININR-", enable_events=True, justification="center")],
-                        [sg.Text("G: "), sg.In(key="-INING-", enable_events=True, justification="center")],
-                        [sg.Text("B: "), sg.In(key="-ININB-", enable_events=True, justification="center")],                        
+                        [sg.Text("R: "), sg.In(key="-ININR-",default_text="40", enable_events=True, justification="center")],
+                        [sg.Text("G: "), sg.In(key="-INING-",default_text="40", enable_events=True, justification="center")],
+                        [sg.Text("B: "), sg.In(key="-ININB-",default_text="40", enable_events=True, justification="center")]                      
                         ]
 frame_selectOutColors = [[sg.Text("Select new color"), sg.Text("   ", background_color=out_color, key="-TXTOUTCOLOR-")],
                         [sg.Text("R: "), sg.In(key="-INOUTR-", enable_events=True, justification="center")],
                         [sg.Text("G: "), sg.In(key="-INOUTG-", enable_events=True, justification="center")],
-                        [sg.Text("B: "), sg.In(key="-INOUTB-", enable_events=True, justification="center")],
+                        [sg.Text("B: "), sg.In(key="-INOUTB-", enable_events=True, justification="center")]
                         
                         ]
 
@@ -257,7 +257,7 @@ frame_completeColors = [[sg.Frame("In Color", layout=frame_selectInColors, size=
 
 #select output folder frame
 frame_SelectOutFolder = [[sg.Frame("Output folder", layout= [[sg.Text("Select output folder", font=("Calibri", 20))],
-                                                            [sg.In(key="-INOUTFOLDER-", enable_events=True),sg.FolderBrowse("Choose Folder", key="-BTNOUTFOLDER-")],
+                                                            [sg.In(key="-INOUTFOLDER-", enable_events=True),sg.FolderBrowse("Choose Folder", key="-BTNOUTFOLDER-")]
                                                             ]
                                     , expand_x=True, element_justification="center")]
                             
@@ -269,14 +269,16 @@ frame_StartRecolor = [[sg.Text("Start recolorization", font=("Calibri", 20))],
                     ]
 
 #layout definition
-layout = [[sg.Column(layout=frame_selectFiles, element_justification='center')],
+recolorizer_layout = [[sg.Column(layout=frame_selectFiles, element_justification='center')],
             [sg.Frame("Colors",layout=frame_completeColors, element_justification="center", expand_x=True)],
             [frame_SelectOutFolder],
             [frame_StartRecolor]
             ]
+            
+
 
 # window definition
-window = sg.Window("Image Viewer", layout, size=(600, 700), element_justification="center")
+window = sg.Window("Image Viewer", layout=recolorizer_layout, size=(600, 800), element_justification="center")
 
 # Run the Event Loop
 while True:
