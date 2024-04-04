@@ -198,8 +198,11 @@ def recolorization(in_color, out_color, filepaths, out_folder):
                 for i in range(0,width):# process all pixels
                     for j in range(0,height):
                         data = img.getpixel((i,j))
-                        # print(data)
-                        if (data[0]==in_color[0] and data[1]==in_color[1] and data[2]==in_color[2]):
+                        # version - change only defned color 
+                        # if (data[0]==in_color[0] and data[1]==in_color[1] and data[2]==in_color[2]):
+                        #     img.putpixel((i,j),out_color)
+                        #version - everything but white background is recolorized
+                        if (data[0]!=in_color[0] and data[1]!=in_color[1] and data[2]!=in_color[2]):
                             img.putpixel((i,j),out_color)
                 #save image
                 img.save(os.path.join(dest_dir, image_name))
