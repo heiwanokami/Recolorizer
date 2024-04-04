@@ -1,9 +1,10 @@
 #import modiles
+import os
 import PySimpleGUI as sg
 from PIL import Image
 import numpy as np
 from pathlib import Path
-import os
+
 
 #set theme of the app
 sg.theme('Reddit')
@@ -245,9 +246,9 @@ frame_selectFiles = [[sg.Text("Select source files", font=("Calibri", 20))],
                     ]
 #select colors
 frame_selectInColors = [[sg.Text("Select origin color"), sg.Text("   ", background_color=in_color, key="-TXTINCOLOR-")],
-                        [sg.Text("R: "), sg.In(key="-ININR-",default_text="40", enable_events=True, justification="center")],
-                        [sg.Text("G: "), sg.In(key="-INING-",default_text="40", enable_events=True, justification="center")],
-                        [sg.Text("B: "), sg.In(key="-ININB-",default_text="40", enable_events=True, justification="center")]                      
+                        [sg.Text("R: "), sg.In(key="-ININR-",default_text="255", enable_events=True, justification="center")],
+                        [sg.Text("G: "), sg.In(key="-INING-",default_text="255", enable_events=True, justification="center")],
+                        [sg.Text("B: "), sg.In(key="-ININB-",default_text="255", enable_events=True, justification="center")]                      
                         ]
 frame_selectOutColors = [[sg.Text("Select new color"), sg.Text("   ", background_color=out_color, key="-TXTOUTCOLOR-")],
                         [sg.Text("R: "), sg.In(key="-INOUTR-", enable_events=True, justification="center")],
